@@ -1,0 +1,22 @@
+---
+interface props {
+  link: string
+}
+
+const link = Astro.props
+---
+
+<a href=`/${link.link}` class='navItem'>
+  <slot />
+</a>
+
+<style>
+  .navItem {
+    color: #75726a;
+    font-weight: 500;
+    font-size: 1.3em;
+  }
+  .navItem:hover {
+    cursor: pointer;
+  }
+</style>
