@@ -1,0 +1,37 @@
+---
+interface Props {
+  id: number
+  name: string
+  rooms: number
+  price: number
+  imageUrl: string
+}
+
+const { id, name, rooms, price, imageUrl } = Astro.props
+---
+
+<a href={`/cabin/${id}`}>
+  <div
+    class='flex flex-col border-4 rounded-3xl shadow-lg shadow-white-500/50 border-secondatyText p-8 cursor-pointer focus:ring-4 focus:outline-none focus:ring-[#1da1f2]/50 font-medium px-5 py-2.5 text-center items-center dark:focus:ring-[#1da1f2]/55 mr-2 mb-2 hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-100 gap-x-2 opacity-90 hover:opacity-100'
+  >
+    <picture class='flex justify-center p-2 mb-4'>
+      <img src=`${imageUrl}` class='h-52' alt='cabinImg' />
+    </picture>
+
+    <div class='flex flex-col h-full w-full'>
+      <span class="flex">
+        <h4 class='text-2xl text-primaryText font-medium'>{name}</h4>
+      </span>
+      <span class='flex flex-row'>
+        <p class='text-xl text-secondatyText font-medium'>{price} $</p>
+      </span>
+      <span class='flex flex-row gap-1'>
+        <p class='text-lg text-primaryText font-medium'>
+          {rooms} habitaciones.
+        </p>
+      </span>
+    </div>
+  </div>
+</a>
+
+<style></style>

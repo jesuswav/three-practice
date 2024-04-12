@@ -1,6 +1,6 @@
 ---
 import HeaderNav from '../components/HeaderNav.astro'
-import SmokeBackground from '../components/SmokeBackground.astro'
+import ViewTransitions from 'astro/components/ViewTransitions.astro'
 
 interface Props {
   title: string
@@ -18,40 +18,86 @@ const { title } = Astro.props
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
     <meta name='generator' content={Astro.generator} />
     <title>{title}</title>
+    <ViewTransitions />
   </head>
   <body>
     <!-- <SmokeBackground /> -->
     <HeaderNav />
-    <div class=''>
+    <div class='bg-lightPink pl-28 pr-28'>
       <slot />
     </div>
+    <style is:global>
+      :root {
+        --accent: 136, 58, 234;
+        --accent-light: 224, 204, 250;
+        --accent-dark: 49, 10, 101;
+        --accent-gradient: linear-gradient(
+          45deg,
+          rgb(var(--accent)),
+          rgb(var(--accent-light)) 30%,
+          white 60%
+        );
+      }
+      html {
+        font-family: system-ui, sans-serif;
+        background: #f5eddc;
+      }
+      code {
+        font-family:
+          Menlo,
+          Monaco,
+          Lucida Console,
+          Liberation Mono,
+          DejaVu Sans Mono,
+          Bitstream Vera Sans Mono,
+          Courier New,
+          monospace;
+      }
+      body {
+        background: #f5eddc;
+      }
+    </style>
+    <script>
+      export async function getStaticPaths() {
+        // Aquí puedes obtener la lista de datos de las cabañas desde alguna fuente de datos
+        const cabinData = [
+          {
+            id: 0,
+            name: 'Cabaña Uno',
+            rooms: 4,
+            price: 2400,
+            url: '../../public/images/cabana-de-madera.png',
+          },
+          {
+            id: 1,
+            name: 'Cabaña Dos',
+            rooms: 4,
+            price: 2400,
+            url: '../../public/images/cabana-de-playa.png',
+          },
+          {
+            id: 2,
+            name: 'Cabaña Tres',
+            rooms: 4,
+            price: 2400,
+            url: '../../public/images/cabana.png',
+          },
+          {
+            id: 3,
+            name: 'Cabaña Cuatro',
+            rooms: 4,
+            price: 2400,
+            url: '../../public/images/cabina.png',
+          },
+        ]
+
+        // Mapea los datos de las cabañas para obtener los paths dinámicos
+        const paths = cabinData.map((cabin) => ({
+          params: { id: cabin.id.toString() },
+        }))
+
+        return { paths, fallback: false }
+      }
+    </script>
   </body>
 </html>
-<style is:global>
-  :root {
-    --accent: 136, 58, 234;
-    --accent-light: 224, 204, 250;
-    --accent-dark: 49, 10, 101;
-    --accent-gradient: linear-gradient(
-      45deg,
-      rgb(var(--accent)),
-      rgb(var(--accent-light)) 30%,
-      white 60%
-    );
-  }
-  html {
-    font-family: system-ui, sans-serif;
-    background: #13151a;
-  }
-  code {
-    font-family:
-      Menlo,
-      Monaco,
-      Lucida Console,
-      Liberation Mono,
-      DejaVu Sans Mono,
-      Bitstream Vera Sans Mono,
-      Courier New,
-      monospace;
-  }
-</style>

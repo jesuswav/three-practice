@@ -1,0 +1,24 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import type { GetStaticPaths } from 'astro'
+import cabinList from '../../services/data'
+
+export const getStaticPaths = (() => {
+
+  return cabinList.map((item) => {
+    return {
+      params: { id: item.id },
+      props: { item },
+    }
+  })
+}) satisfies GetStaticPaths
+
+const { id } = Astro.params
+const { item } = Astro.props
+---
+
+<Layout title='Details'>
+  <div>
+    <h1>{item.name}</h1>
+  </div>
+</Layout>
