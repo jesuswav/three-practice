@@ -61,10 +61,10 @@
 
     // carga del archivo que nos ayudara con las luces y los reflejos
 
-    gltfLoader.load('../../public/assets/scene.gltf', function (gltf) {
-      const model = gltf.scene
+    gltfLoader.load('../../public/assets/scene.gltf', async function (gltf) {
+      const model = await gltf.scene
       model.position.set(0, -0.06, 0)
-      myModel = model
+      myModel = await model
       scene.add(model)
     })
   }
