@@ -1,0 +1,70 @@
+---
+const months = [
+  {
+    name: 'January',
+    days: [
+      1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
+      22, 23, 24, 25, 26, 27, 28, 29, 30, 31,
+    ],
+  },
+]
+
+const days = ['Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat', 'Sun']
+---
+
+<div class='md:w-[476px] p-10'>
+  <div class='flex flex-row w-11/12 justify-between pb-5'>
+    <span>
+      <svg
+        xmlns='http://www.w3.org/2000/svg'
+        fill='none'
+        viewBox='0 0 24 24'
+        stroke-width='1.5'
+        stroke='currentColor'
+        class='w-6 h-6'
+      >
+        <path
+          stroke-linecap='round'
+          stroke-linejoin='round'
+          d='M15.75 19.5 8.25 12l7.5-7.5'></path>
+      </svg>
+    </span>
+    <!-- Month Name -->
+    <span>
+      <p class='font-medium'>{months[0].name}</p>
+    </span>
+    <span>
+      <svg
+        xmlns='http://www.w3.org/2000/svg'
+        fill='none'
+        viewBox='0 0 24 24'
+        stroke-width='1.5'
+        stroke='currentColor'
+        class='w-6 h-6'
+      >
+        <path
+          stroke-linecap='round'
+          stroke-linejoin='round'
+          d='m8.25 4.5 7.5 7.5-7.5 7.5'></path>
+      </svg>
+    </span>
+  </div>
+  <div class='grid grid-cols-7'>
+    {
+      days.map((item) => (
+        <span class=''>
+          <p class='font-bold'>{item}</p>
+        </span>
+      ))
+    }
+  </div>
+  <div class='grid grid-cols-7'>
+    {
+      months[0].days.map((item) => (
+        <span class='pt-10'>
+          <p class='font-semibold'>{item}</p>
+        </span>
+      ))
+    }
+  </div>
+</div>

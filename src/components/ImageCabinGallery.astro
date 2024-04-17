@@ -1,0 +1,48 @@
+---
+interface props {
+  imageUrl: string
+}
+
+const { imageUrl } = Astro.props
+---
+
+<div class='container'>
+  <div class='subcontainer'>
+    <img
+      class='object-cover'
+      src={`${imageUrl[0]}`}
+      alt={`${imageUrl[0]} image`}
+    />
+  </div>
+  <div class='gridsubcontainer grid grid-cols-2 gap-1'>
+    <img src={`${imageUrl[1]}`} alt={`${imageUrl[1]} image`} />
+    <img src={`${imageUrl[2]}`} alt={`${imageUrl[2]} image`} />
+    <img src={`${imageUrl[3]}`} alt={`${imageUrl[3]} image`} />
+    <img src={`${imageUrl[4]}`} alt={`${imageUrl[4]} image`} />
+  </div>
+</div>
+
+<style>
+  .container {
+    display: flex;
+    flex-direction: row;
+    height: 400px;
+    border-radius: 20px;
+    overflow: hidden;
+    gap: 4px;
+  }
+  .subcontainer {
+    width: 50%;
+  }
+  .subcontainer img {
+    height: 100%;
+    width: 110%;
+  }
+  .gridsubcontainer {
+    width: 50%;
+  }
+  .gridsubcontainer img {
+    height: 100%;
+    object-fit: cover;
+  }
+</style>
